@@ -1,0 +1,158 @@
+
+     Lista de Ventas
+
+     ventas = [
+      {"fecha": "2024-01-12", "producto": "alicate",   "cantidad": 12,  "precio": 3500.5},
+      {"fecha": "2024-01-03", "producto": "martillo",  "cantidad": 34,  "precio": 500.6},
+      {"fecha": "2024-01-04", "producto": "clavo",     "cantidad": 100, "precio": 20.4 },
+      {"fecha": "2024-02-03", "producto": "lija",      "cantidad": 10,  "precio": 100.8 },   
+      {"fecha": "2024-02-08", "producto": "diluyente", "cantidad": 2,   "precio": 1500.6 },
+      {"fecha": "2024-02-16", "producto": "esmeril",   "cantidad": 5,   "precio": 14000.4 },   
+      {"fecha": "2024-01-22", "producto": "cemento",   "cantidad": 200, "precio": 3500.3 },   
+      {"fecha": "2024-01-12", "producto": "lampara",   "cantidad": 12,  "precio": 12000.6}, 
+      {"fecha": "2024-04-07", "producto": "rodillo",   "cantidad": 30,  "precio": 21500.3}  
+     ]
+
+ 1-  Se creo una lista llamada ventas, donde cada diccionario representa una venta, cada venta incluye los valores:
+    
+    fecha
+    producto
+    cantidad
+    precio
+   
+    Codigo Phyton
+
+    def calculo_Ingresos_Totales(lista):   # definicion de la funcion Calculo_ingresos_totales
+        total = 0                          # inicializa total
+        for i in range(0, len(lista)):     # para cada valor 
+               total = total + lista[i]["cantidad"]*lista[i]["precio"]    # se acumula el precio multiplicado por la cantidad
+        print("Ingresos totales de ventas: ", total)                      # se imprime el valor total calculado
+
+    print("")
+    print("1 - Ingresos totales")
+    calculo_Ingresos_Totales(ventas)      # llamada a la funcion
+
+    Resultado : 1-  Ingresos totales de Ventas  : 1624153.8
+     --------------------------
+
+2-  Se creo diccionario llamado ventas_por_producto, donde las claves son los nombres de los productos y los valores son la cantidad
+    total vendidas de cada producto.
+ 
+   ventas_por_producto ={
+                   "martillo": 200,
+                   "alicate" : 24,
+                   "lija": 400,
+                   "diluyente" : 50,
+                   "destornillador": 300,
+                   "lampara": 25,
+                   "candado": 60 }
+
+    Se Utilizo este diccionario para identificar el producto que tuvo la mayor cantidad total vendida.
+
+    Cdigo Phyton
+
+    def producto_mayor_venta(diccionario):     # se definio la funcion producto_mayor_venta con parametro diccionario
+        prod_max = " "                         # se inicializa variable 
+        cant_max = 0                           # se iniciliza variable
+        for producto,cantidad in diccionario.items():      # por cada valor en diccionario se compara la cantidad
+              if (cantidad > cant_max):                    # con variable, para guardar el producto y la mayor cantidad 
+                  cant_max = cantidad
+                  prod_max = producto
+        print("Producto mas vendido :", prod_max, cant_max) # se imprime el producto y cantidad mayor
+
+    print("")
+    print("2- Producto mayor venta")  
+    producto_mayor_venta(ventas_por_producto)    # se llama a la funcion con argumento el diccionario ventas_por_producto
+
+    Resultado : Producto mas vendido es lija con 400 unidades
+    
+
+  3- Se creo diccionario diccionario llamado precio_por_producto, donde las claves son los nombres de los productos
+     y los valores son tuplas.Cada tupla contiene dos elementos: la suma de los precios de venta de todas las unidades
+     vendidas y la cantidad total de unidades vendidas.
+     Se calcula el precio promedio de venta para cada producto utilizando la informacion del diccionario.
+
+     precio_por_producto = {
+                       "martillo" : (10000, 1200),
+                       "clavo" : (10000.5, 2200),
+                       "alicate" : (90000.5 ,3200),
+                       "lampara" : (70000.5, 6200),
+                       "destornillador" : (20000, 7000),
+                       "candado" : (50000.5, 6000),
+                       "cemento" : (40000.5, 4000)
+                       }
+
+     Codigo Phyton
+
+     def precio_promedio_venta(diccionario):     # se definio funcion precio_promedio_venta que recibe como parametro el diccionario
+           precio_pmp_= 0                        # se inicializa variable donde se calculara el precio promedio
+           for producto, (precio, cantidad) in diccionario.items():  # para cada producto se calcula su precio promedio
+                precio_pmp = precio/cantidad                         # se usa la funcion item() para recuperar los datos
+                print(f"Precio promedio de producto {producto} : {precio_pmp:.2f}")   # se imprime los resultados con formato decimal
+                   
+     print("")
+     print(" 3-  Precio promedio por producto")
+     precio_promedio_venta(precio_por_producto)                     # se llama a la funcion pasando como parametro el diccionario
+                                                                    #  precio_por_producto
+
+     Resultado :
+                Precio promedio de producto martillo : 8.33
+                Precio promedio de producto clavo : 4.55
+                Precio promedio de producto alicate : 28.13
+                Precio promedio de producto lampara : 11.29
+                Precio promedio de producto destornillador : 2.86
+                Precio promedio de producto candado : 8.33
+                Precio promedio de producto cemento : 10.00
+
+  4-  se crea diccionario llamado ingresos_por_dia, donde las claves son las fechas y los valores son los ingresos totales
+      generados en cada dia.
+      Se utiliza un bucle para calcular los ingresos totales por dia y almacena estos valores en el diccionario
+
+      ingresos_por_dia = {
+                   "2024-01-12": 50000.3,
+                   "2024-02-30": 56000.7,
+                   "2024-01-04":32000.4,
+                   "2024-02-03":54000.2,
+                   "2024-01-12": 43000.,
+                   "2024-03-21": 70000.5,
+                   "2024-03-24": 83000.2,
+                   "2024-03-21": 23000.4,
+                   "2024-01-22": 65000.4
+                 }
+
+      Codigo Phyton
+
+      def ingreso_totales_por_dia(diccionario):    # se define la funcion pasando como parametro el diccionario
+            totales_por_dia = {}                   # se inicializa diccionario de trabajo
+            for   fecha, cantidad in  diccionario: # bucle para cada clave de fecha se acumula el total o se inicializa en 
+                      if  fecha in totales_por_dia:# el diccionario de trabajo 
+                          totales_por_dia[fecha] += cantidad   # suma al existente
+                      else:
+                          totales_por_dia[fecha]= cantidad     # hace nueva entrada
+            for  fecha, total in totales_por_dia.items():      # por cada clave fecha acumulada se imprime el total en formato decimal
+                 print(f"{fecha}: ${total:,.2f}")
+         
+     print("")
+     print("3- Ventas por dia")
+     ingreso_totales_por_dia(ingresos_por_dia)
+
+     Resultado :
+
+  5-  Se crea diccionario llamado resumen_venta, donde las claves son los nombres de los productos y los valores son diccionarios
+      anidados, cada diccionrio anidado contiene:
+
+      cantidad total
+      ingresos totales
+      precio promedio 
+   
+      resumen_ventas = {
+                   "martillo"      : {4500, 456606, 3456.9}
+                   "alicate"       : {24, 2345, 4556.9}
+                   "lija"          : {4555, 34589, 2389.7}
+                   "diluyente"     : {50,3400, 3400.3}
+                   "destornillador": {300,34889,   32000.4}
+                   "lampara"       : {25400,34000, 21300.4}
+                   "candado"       : {6000, 34880, 3200.4}                     
+                 }
+
+  
